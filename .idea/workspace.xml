@@ -4,25 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b707b6c-15ac-4fba-8263-5a26e54cd16e" name="Changes" comment="Updated methods for GUI implementation.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TeacherLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TeacherUI.java" afterDir="false" />
+    <list default="true" id="7b707b6c-15ac-4fba-8263-5a26e54cd16e" name="Changes" comment="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Save.ser" beforeDir="false" afterPath="$PROJECT_DIR$/Save.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CourseInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CourseInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CreateStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateStudent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainRestore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainRestore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QNA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NoteUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NoteUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/QNAUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QNAUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Semester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Semester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentLogin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +60,13 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.BookUI.executor": "Run",
+    "Application.CreateStudent.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MainRestore.executor": "Run",
+    "Application.QNAUI.executor": "Run",
+    "Application.StudentHomePage.executor": "Run",
+    "Application.StudentLogin.executor": "Run",
     "Application.TeacherLogin.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -81,7 +80,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "H:/UIS/src/Main.java",
-    "settings.editor.selected.configurable": "CodeWithMe",
+    "settings.editor.selected.configurable": "advanced.settings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -116,8 +115,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
       </set>
     </attachedChunks>
   </component>
@@ -145,6 +144,9 @@
       <workItem from="1716890133137" duration="3463000" />
       <workItem from="1717041074235" duration="4773000" />
       <workItem from="1717059385104" duration="4138000" />
+      <workItem from="1717237515346" duration="5241000" />
+      <workItem from="1717255559193" duration="4655000" />
+      <workItem from="1717297633091" duration="3904000" />
     </task>
     <task id="LOCAL-00001" summary="Added git command text">
       <option name="closed" value="true" />
@@ -234,10 +236,10 @@
     <MESSAGE value="Added(ask question to all) and updated some QNA methods and commented." />
     <MESSAGE value="Added &quot;Notification&quot; and &quot;book borrowing&quot; features." />
     <MESSAGE value="Added &quot;Schedule&quot; and &quot;Schedule Changing&quot; features." />
-    <MESSAGE value="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher." />
     <MESSAGE value="Added &quot;mark System&quot; and &quot;Serialization, Deserialization&quot; for saving state." />
     <MESSAGE value="Updated methods for GUI implementation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated methods for GUI implementation." />
+    <MESSAGE value="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
