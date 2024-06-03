@@ -9,7 +9,7 @@ public class AttendanceUI extends JFrame {
     private Map<String, Integer> studentAttendance;
     private int totalDays;
 
-    public AttendanceUI() {
+    public AttendanceUI(Teacher teacher) {
         studentAttendance = new HashMap<>();
         totalDays = 0;
 
@@ -41,7 +41,7 @@ public class AttendanceUI extends JFrame {
         backButton.setPreferredSize(new Dimension(100, 40));
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new TeacherHomePage("JaneDoe").setVisible(true);
+                new TeacherHomePage(teacher).setVisible(true);
                 dispose();
             }
         });
@@ -122,7 +122,7 @@ public class AttendanceUI extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new AttendanceUI().setVisible(true);
+                new AttendanceUI(new Teacher()).setVisible(true);
             }
         });
     }

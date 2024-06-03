@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NotificationUI extends JFrame {
-    public NotificationUI() {
+    public NotificationUI(Teacher teacher) {
         setTitle("Notification Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 600);
@@ -45,6 +45,17 @@ public class NotificationUI extends JFrame {
                 // Handle the submit action (e.g. save the notification)
                 String course = courseField.getText();
                 String notification = notificationField.getText();
+                Course course1 = null;
+                for(Course c: teacher.courseList){
+                    if(c.courseCode.equals(course)){
+                        course1 = c;
+                        break;
+                    }
+                }
+                if(course1 == null){
+                    JOptionPane.showMessageDialog(NotificationUI.this, "Course not found", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                teacher.giveNotification(course1, notification);
                 // Implement submission logic
                 JOptionPane.showMessageDialog(null, "Notification sent for course: " + course);
             }
@@ -53,7 +64,7 @@ public class NotificationUI extends JFrame {
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new TeacherHomePage("JaneDoe").setVisible(true); // Assuming the username is "JaneDoe"
+                new TeacherHomePage(teacher).setVisible(true); // Assuming the username is "JaneDoe"
             }
         });
 
@@ -79,7 +90,7 @@ public class NotificationUI extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new NotificationUI().setVisible(true);
+                new NotificationUI(new Teacher()).setVisible(true);
             }
         });
     }

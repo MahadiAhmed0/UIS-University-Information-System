@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TeacherQNAUI extends JFrame {
-    public TeacherQNAUI() {
+    public TeacherQNAUI(Teacher teacher) {
         setTitle("Teacher Q&A");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 600); // Adjust the window size if needed
@@ -26,19 +26,21 @@ public class TeacherQNAUI extends JFrame {
         allQuestionsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open All Questions page
+                JOptionPane.showMessageDialog(TeacherQNAUI.this, teacher.showQuestion());
             }
         });
 
         allAnswersButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open All Answers page
+                JOptionPane.showMessageDialog(TeacherQNAUI.this, teacher.showAnswer());
             }
         });
 
         answerQuestionButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open Answer a Question popup
-                openAnswerQuestionPopup();
+                openAnswerQuestionPopup(teacher);
             }
         });
 
@@ -53,7 +55,7 @@ public class TeacherQNAUI extends JFrame {
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Go back to the previous page
-                new TeacherHomePage("JaneDoe").setVisible(true);
+                new TeacherHomePage(teacher).setVisible(true);
                 dispose();
             }
         });
@@ -75,17 +77,14 @@ public class TeacherQNAUI extends JFrame {
         return button;
     }
 
-    private void openAnswerQuestionPopup() {
+    private void openAnswerQuestionPopup(Teacher teacher) {
         JDialog dialog = new JDialog(this, "Answer a Question", true);
-        dialog.setLayout(new GridLayout(5, 2, 10, 10));
+        dialog.setLayout(new GridLayout(3, 2, 10, 10));
         dialog.setSize(400, 300);
         dialog.setLocationRelativeTo(this);
 
-        dialog.add(new JLabel("Student Name:"));
-        JTextField studentNameField = new JTextField();
-        dialog.add(studentNameField);
 
-        dialog.add(new JLabel("Question:"));
+        dialog.add(new JLabel("Question no:"));
         JTextArea questionArea = new JTextArea();
         questionArea.setRows(3); // Set the number of rows for the question textarea
         questionArea.setWrapStyleWord(true);
@@ -93,9 +92,6 @@ public class TeacherQNAUI extends JFrame {
         JScrollPane questionScrollPane = new JScrollPane(questionArea);
         dialog.add(questionScrollPane);
 
-        dialog.add(new JLabel("Course Code:"));
-        JTextField courseCodeField = new JTextField();
-        dialog.add(courseCodeField);
 
         dialog.add(new JLabel("Answer:"));
         JTextArea answerField = new JTextArea();
@@ -109,10 +105,9 @@ public class TeacherQNAUI extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Handle the answer submission
-                String studentName = studentNameField.getText();
-                String question = questionArea.getText();
-                String courseCode = courseCodeField.getText();
+                int question = Integer.parseInt(questionArea.getText());
                 String answer = answerField.getText();
+                teacher.ansQuestion(teacher.questionList.get(question-1), answer);
 
                 // Process the answer (e.g., save to a database or display a confirmation)
                 JOptionPane.showMessageDialog(dialog, "Answer submitted for: " + question);
@@ -120,6 +115,7 @@ public class TeacherQNAUI extends JFrame {
             }
         });
 
+        dialog.add(new JLabel());
         dialog.add(submitButton);
 
         dialog.setVisible(true);
@@ -128,7 +124,7 @@ public class TeacherQNAUI extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new TeacherQNAUI().setVisible(true);
+                new TeacherQNAUI(new Teacher()).setVisible(true);
             }
         });
     }

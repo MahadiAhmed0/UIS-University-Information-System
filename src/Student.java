@@ -34,6 +34,9 @@ public class Student implements QNA, Serializable{
         notificationList = new ArrayList<>();
         borrowedBookList = new ArrayList<>();
         courseInfoList = new ArrayList<>(6);
+        courseInfoList.add(new CourseInfo());
+        courseInfoList.add(new CourseInfo());
+        courseInfoList.add(new CourseInfo());
         getSchedule();
 
     }
@@ -44,19 +47,22 @@ public class Student implements QNA, Serializable{
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.schedule = new ArrayList<>();
-        courseInfoList = new ArrayList<>(6);
+        courseInfoList = new ArrayList<CourseInfo>(6);
         this.semester = semester;
         this.department = department;
         this.program = program;
         this.password = password;
 
         this.courseList = new ArrayList<>();
-        courseList.addAll(semester.courses);
+        courseList = semester.courses;
         teacherList = semester.teachers;
         semester.students.add(this);
 
         notificationList = new ArrayList<>();
         borrowedBookList = new ArrayList<>();
+        courseInfoList.add(new CourseInfo());
+        courseInfoList.add(new CourseInfo());
+        courseInfoList.add(new CourseInfo());
         getSchedule();
 
         for(Teacher t : semester.teachers){
@@ -89,7 +95,7 @@ public class Student implements QNA, Serializable{
     @Override
     public void askQuestion(Student student, Teacher teacher,String question, Course course ) {
         Question question1 = new Question(this, teacher, course, question);
-        this.askedQuestionList.add(question1);
+        //this.askedQuestionList.add(question1);
         teacher.questionList.add(question1);
 
     }
@@ -101,7 +107,7 @@ public class Student implements QNA, Serializable{
         if(question.teacher.askedQuestionList.contains(question)){
             question.teacher.askedQuestionList.remove(question);
         }
-        question.student.answerList.add(answer1);
+        //question.student.answerList.add(answer1);
         question.teacher.answerList.add(answer1);
 
     }
@@ -133,15 +139,17 @@ public class Student implements QNA, Serializable{
         notificationList.clear();
     }
 
-    public void showNotificationList(){
+    public String  showNotificationList(){
+        StringBuilder notification = new StringBuilder();
         if(notificationList.isEmpty()){
-            System.out.println("No notification found");
+            notification.append("No notification found").append("\n");
         }
         else {
-            for (Notification notification : notificationList) {
-                System.out.println(notification);
+            for (Notification noti : notificationList) {
+                notification.append(noti).append("\n");
             }
         }
+        return notification.toString();
     }
     ////////////////////////
 
@@ -229,7 +237,7 @@ public class Student implements QNA, Serializable{
     void addTopic(Course course, String topic){
         for(Course c:courseList){
             if(c.equals(course)){
-                courseInfoList.get(courseList.indexOf(c)).topics.add(topic);
+                c.topics.add(topic);
 
             }
         }
@@ -237,7 +245,7 @@ public class Student implements QNA, Serializable{
     void removeTopic(Course course, int number){
         for(Course c:courseList){
             if(c.equals(course)){
-                courseInfoList.get(courseList.indexOf(c)).topics.remove(number-1);
+               c.topics.remove(number-1);
             }
         }
     }
@@ -247,7 +255,7 @@ public class Student implements QNA, Serializable{
             if(c.equals(course)){
                 int i=1;
                 sb.append("Topics for ").append(c.courseCode).append("\n");
-                for(String str:courseInfoList.get(courseList.indexOf(c)).topics){
+                for(String str:c.topics){
                     sb.append(i).append(". ").append(str).append("\n");
                     i++;
                 }

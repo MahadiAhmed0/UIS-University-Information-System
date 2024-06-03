@@ -13,7 +13,7 @@ public class Main {
         Book book = new Book("Demon Slayer", "Jani na");
 
         teacher.askQuestion(student, teacher, "What is your name?", course);
-        System.out.println(teacher.askedQuestionList.getFirst().question);
+        //System.out.println(teacher.askedQuestionList.getFirst().question);
         System.out.println(student.questionList.getFirst().question);
 
         student.ansQuestion(student.questionList.getFirst(), "Mahbub");
@@ -76,7 +76,7 @@ public class Main {
         realStudent.showTeachers();
         realStudent.getSchedule();
         realStudent.showSchedule();
-        //realStudent.addTopic(realStudent.courseList.get(0), "Encapsulation");
+        realStudent.addTopic(realStudent.courseList.getFirst(), "Encapsulation");
 
 
         Student realStudent2 = new Student("Mahbub2", "220042157", "mahbubrahman@iut-dhaka.edu",
@@ -84,7 +84,7 @@ public class Main {
 
         //realStudent2.addTopic(realStudent2.courseList.get(0), "Encapsulation new test");
 
-        //realStudent.showTopic(realStudent.courseList.get(0));
+        realStudent.showTopic(realStudent.courseList.getFirst());
         //realStudent2.showTopic(realStudent2.courseList.get(0));
         System.out.println(realStudent.teacherList.getFirst().studentList.getFirst().name);
         System.out.println();
@@ -95,6 +95,8 @@ public class Main {
         //realStudent.showMarks(realStudent.courseList.getFirst());
         //realStudent2.showMarks(realStudent2.courseList.getFirst());
 
+        System.out.println(realStudent2.showCourse());
+        semester.teachers.getFirst().giveNotification(semester.students.getFirst(),semester.courses.getFirst(), "Test notification");
 
         try
         {

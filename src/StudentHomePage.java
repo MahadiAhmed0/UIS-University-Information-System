@@ -83,6 +83,7 @@ public class StudentHomePage extends JFrame {
         notification.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open Notification page
+                JOptionPane.showMessageDialog(null, student.showNotificationList(),"Notification", JOptionPane.QUESTION_MESSAGE);
             }
         });
 
@@ -169,9 +170,9 @@ public class StudentHomePage extends JFrame {
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
 
         JButton submitButton = new JButton("Back");
-        JButton defaultButton = new JButton();
 
-        buttonPanel.add(defaultButton);
+
+        buttonPanel.add(new JLabel());
         buttonPanel.add(submitButton);
 
         answerDialog.add(buttonPanel, BorderLayout.SOUTH);
@@ -183,116 +184,6 @@ public class StudentHomePage extends JFrame {
         });
 
         answerDialog.setVisible(true);
-    }
-
-    private void openCourseDialog(Student student) {
-        JDialog answerDialog = new JDialog(this, "Course", true);
-        answerDialog.setSize(400, 300);
-        answerDialog.setLayout(new BorderLayout());
-        answerDialog.setLocationRelativeTo(this);
-
-        JTextArea scheduleTextArea = new JTextArea();
-        scheduleTextArea.setEditable(false);
-        JScrollPane scheduleScrollPane = new JScrollPane(scheduleTextArea);
-
-        scheduleTextArea.setText(student.showCourse());
-        answerDialog.add(scheduleTextArea, BorderLayout.CENTER);
-
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 4));
-
-        JButton submitButton = new JButton("Back");
-        JButton addTopicButton = new JButton("Add Topic");
-        JButton removeTopicButton = new JButton("Remove Topic");
-        JButton showTopicButton = new JButton("Show Topic");
-
-        buttonPanel.add(addTopicButton);
-        buttonPanel.add(removeTopicButton);
-        buttonPanel.add(showTopicButton);
-        buttonPanel.add(submitButton);
-
-        answerDialog.add(buttonPanel, BorderLayout.SOUTH);
-
-        submitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                answerDialog.dispose();
-            }
-        });
-
-        addTopicButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                addTopicDialog(student);
-            }
-        });
-
-        removeTopicButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                removeTopicDialog(student);
-            }
-        });
-
-        answerDialog.setVisible(true);
-    }
-
-    private  void addTopicDialog(Student student){
-        JDialog answerDialog = new JDialog(this, "Add Topic", true);
-        answerDialog.setSize(400, 200);
-        answerDialog.setLayout(new GridLayout(4, 2, 10, 10));
-        answerDialog.setLocationRelativeTo(this);
-
-        JLabel nameLabel = new JLabel("Course Code:");
-        JTextField nameField = new JTextField();
-        JLabel topicLabel = new JLabel("Topic:");
-        JTextField topicField = new JTextField();
-        JButton submitButton = new JButton("Submit");
-
-        submitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Course course = null;
-                for(Course c: student.courseList){
-                    if(c.courseCode.equals(nameField.getText())){
-                        course = c;
-                        break;
-                    }
-                }
-                if(course == null){
-                    JOptionPane.showMessageDialog(answerDialog, "No course found", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                student.addTopic(course, topicField.getText());
-                JOptionPane.showMessageDialog(answerDialog, "Topic Added", "Success", JOptionPane.INFORMATION_MESSAGE);
-                answerDialog.dispose();
-            }
-        });
-    }
-
-    private  void removeTopicDialog(Student student){
-        JDialog answerDialog = new JDialog(this, "Remove Topic", true);
-        answerDialog.setSize(400, 200);
-        answerDialog.setLayout(new GridLayout(4, 2, 10, 10));
-        answerDialog.setLocationRelativeTo(this);
-
-        JLabel nameLabel = new JLabel("Course Code:");
-        JTextField nameField = new JTextField();
-        JLabel topicLabel = new JLabel("Number:");
-        JTextField topicField = new JTextField();
-        JButton submitButton = new JButton("Submit");
-
-        submitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Course course = null;
-                for(Course c: student.courseList){
-                    if(c.courseCode.equals(nameField.getText())){
-                        course = c;
-                        break;
-                    }
-                }
-                if(course == null){
-                    JOptionPane.showMessageDialog(answerDialog, "No course found", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                student.removeTopic(course, Integer.parseInt(topicField.getText()));
-                JOptionPane.showMessageDialog(answerDialog, "Topic Removed", "Success", JOptionPane.INFORMATION_MESSAGE);
-                answerDialog.dispose();
-            }
-        });
     }
 
     public static void main(String[] args) {

@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 public class TeacherHomePage extends JFrame {
     private String username; // Assuming the username is passed to this class
 
-    public TeacherHomePage(String username) {
-        this.username = username;
+    public TeacherHomePage(Teacher teacher) {
+        this.username = teacher.name;
 
         setTitle("Teacher Home Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,28 +32,28 @@ public class TeacherHomePage extends JFrame {
         qnaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new TeacherQNAUI().setVisible(true);
+                new TeacherQNAUI(teacher).setVisible(true);
             }
         });
 
         marksButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new MarkUI().setVisible(true);
+                new MarkUI(teacher).setVisible(true);
             }
         });
 
         notificationButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new NotificationUI().setVisible(true);
+                new NotificationUI(teacher).setVisible(true);
             }
         });
 
         attendanceButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new AttendanceUI().setVisible(true);
+                new AttendanceUI(teacher).setVisible(true);
             }
         });
 
@@ -67,6 +67,7 @@ public class TeacherHomePage extends JFrame {
         logoutButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
+                Semester.save(teacher.semester);
                 new HomePageUI().setVisible(true);
             }
         });
@@ -89,8 +90,9 @@ public class TeacherHomePage extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
+            Teacher teacher = new Teacher();
             public void run() {
-                new TeacherHomePage("JaneDoe").setVisible(true);
+                new TeacherHomePage(teacher).setVisible(true);
             }
         });
     }

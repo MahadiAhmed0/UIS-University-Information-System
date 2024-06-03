@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MarkUI extends JFrame {
-    public MarkUI() {
+    public MarkUI(Teacher teacher) {
         setTitle("Mark Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 600);
@@ -62,7 +62,7 @@ public class MarkUI extends JFrame {
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new TeacherHomePage("JaneDoe").setVisible(true); // Assuming the username is "JaneDoe"
+                new TeacherHomePage(teacher).setVisible(true); // Assuming the username is "JaneDoe"
             }
         });
 
@@ -198,7 +198,7 @@ public class MarkUI extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new MarkUI().setVisible(true);
+                new MarkUI(new Teacher()).setVisible(true);
             }
         });
     }

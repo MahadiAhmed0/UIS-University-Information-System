@@ -24,10 +24,10 @@ public class Semester implements java.io.Serializable{
 
                 students = new ArrayList<>();
                 teachers = new ArrayList<>();
-                teachers.add(new Teacher("Jubair sir", "01234567890", "jubair@iut-dhaka.edu"));
-                teachers.add(new Teacher("Azam sir", "01234567890", "azam@iut-dhaka.edu"));
-                teachers.add(new Teacher("Farid sir", "01234567890", "farid@iut-dhaka.edu"));
-                teachers.add(new Teacher("Nahin Sir", "01234567890", "nahin@iut-dhaka.edu"));
+                teachers.add(new Teacher("Jubair sir", "01234567890", "jubair@iut-dhaka.edu",this));
+                teachers.add(new Teacher("Azam sir", "01234567890", "azam@iut-dhaka.edu",this));
+                teachers.add(new Teacher("Farid sir", "01234567890", "farid@iut-dhaka.edu",this));
+                teachers.add(new Teacher("Nahin Sir", "01234567890", "nahin@iut-dhaka.edu",this));
 
                 courses.get(0).addTeacher(teachers.get(0));
                 courses.get(1).addTeacher(teachers.get(1));
@@ -60,7 +60,7 @@ public class Semester implements java.io.Serializable{
 
         catch(IOException ex)
         {
-            System.out.println("IOException is caught");
+            System.out.println(ex.getMessage());
         }
 
         catch(ClassNotFoundException ex)
